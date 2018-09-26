@@ -23,7 +23,7 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
-        mExampleList = ResultRepository.getPersons();
+        mExampleList = ResultRepository.getResults();
         buildRecyclerView();
 
         EditText searchText2 = findViewById(R.id.searchText2);
