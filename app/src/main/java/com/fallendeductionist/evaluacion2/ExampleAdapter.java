@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,8 +15,12 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     private ArrayList<ExampleResult> mExampleList;
     private OnResultClickListener mListener;
 
-    public interface OnResultClickListener{
+    public interface OnResultClickListener {
         void onResultClick(int position);
+    }
+
+    public void setOnResultCLickListener(OnResultClickListener listener){
+        mListener = listener;
     }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder{
@@ -24,6 +29,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public TextView mTextView1;
         public TextView mTextView2;
         public TextView mTextView3;
+        public RatingBar mRatingBar;
 
         public ExampleViewHolder(View itemView, final OnResultClickListener listener){
             super(itemView);
@@ -31,6 +37,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
             mTextView1 = itemView.findViewById(R.id.textView1);
             mTextView2 = itemView.findViewById(R.id.textView2);
             mTextView3 = itemView.findViewById(R.id.textView3);
+            mRatingBar = itemView.findViewById(R.id.ratingBar);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -65,6 +72,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         holder.mTextView1.setText(currentResult.getText1());
         holder.mTextView2.setText(currentResult.getText2());
         holder.mTextView3.setText(currentResult.getText3());
+        holder.mRatingBar.setRating(currentResult.getRating());
     }
 
     @Override

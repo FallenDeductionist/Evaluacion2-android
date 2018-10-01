@@ -50,16 +50,17 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private void filter(String text){
-        ArrayList<ExampleResult> filteredList = new ArrayList<>();
+        final ArrayList<ExampleResult> filteredList = new ArrayList<>();
 
         for (ExampleResult result : mExampleList){
+
             if(result.getText4().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(result);
-
             }
         }
 
         mAdapter.filterList(filteredList);
+
     }
 
 
@@ -71,6 +72,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
 
     }
 }

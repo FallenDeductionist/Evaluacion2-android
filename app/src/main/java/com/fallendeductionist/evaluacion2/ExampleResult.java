@@ -12,17 +12,17 @@ public class ExampleResult implements Parcelable {
     private String mText2;
     private String mText3;
     private String mText4;
+    private float mRating;
 
 
-    public ExampleResult(int imageResource, String text1, String text2, String text3, String text4){
+    public ExampleResult(int imageResource, String text1, String text2, String text3, String text4, float rating){
         mImageResource = imageResource;
         mText1 = text1;
         mText2 = text2;
         mText3 = text3;
         mText4 = text4;
+        mRating = rating;
     }
-
-
 
     protected ExampleResult(Parcel in) {
         mImageResource = in.readInt();
@@ -30,6 +30,7 @@ public class ExampleResult implements Parcelable {
         mText2 = in.readString();
         mText3 = in.readString();
         mText4 = in.readString();
+        mRating = in.readFloat();
     }
 
     public static final Creator<ExampleResult> CREATOR = new Creator<ExampleResult>() {
@@ -58,6 +59,9 @@ public class ExampleResult implements Parcelable {
 
     public String getText4() { return mText4; }
 
+    public float getRating(){
+        return mRating;
+    }
 
     @Override
     public int describeContents() {
@@ -71,5 +75,6 @@ public class ExampleResult implements Parcelable {
         dest.writeString(mText2);
         dest.writeString(mText3);
         dest.writeString(mText4);
+        dest.writeFloat(mRating);
     }
 }
